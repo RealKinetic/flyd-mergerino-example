@@ -5,7 +5,7 @@ import merge from "mergerino";
 window.merge = merge;
 
 // State
-const state = flyd.stream();
+const stateStream = flyd.stream();
 
 const initialState = {
   user: {
@@ -20,21 +20,25 @@ const initialState = {
   },
 };
 
-const states = flyd.scan(merge, initialState, state);
+const states = flyd.scan(merge, initialState, stateStream);
 
 // Actions
-const addAction = (state) => ({ ...state, counter: state.counter + 1 });
-const subtractAction = (state) => ({ ...state, counter: state.counter - 1 });
+const addAction = (state) => ({ ...state, user: { age: state.user.age + 1 } });
+
+const subtractAction = (state) => ({
+  ...state,
+  user: { age: state.user.age - 1 },
+});
 
 // View
 const addButton = document.getElementById("add");
 const subtractButton = document.getElementById("subtract");
 const viewState = document.getElementById("state");
-addButton.onclick = () => state(addAction);
-subtractButton.onclick = () => state(subtractAction);
+addButton.onclick = () => stateStream(addAction);
+subtractButton.onclick = () => stateStream(subtractAction);
 
 states.map((state) => {
-  viewState.innerText = state.counter;
+  viewState.innerText = state.user.age;
   console.log(state);
   return state;
 });

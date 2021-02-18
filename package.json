@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "hot": "parcel watch index.html"
+    "hot": "parcel serve index.html"
   },
   "dependencies": {
     "flyd": "^0.2.8",
