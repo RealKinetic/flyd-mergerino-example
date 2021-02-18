@@ -1,0 +1,17 @@
+{
+  "name": "flyd-mergerino-example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "hot": "parcel watch index.html"
+  },
+  "dependencies": {
+    "flyd": "^0.2.8",
+    "mergerino": "^0.4.0",
+    "prettier": "^2.2.1"
+  },
+  "devDependencies": {
+    "parcel": "^1.12.4"
+  }
+}
